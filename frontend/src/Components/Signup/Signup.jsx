@@ -35,11 +35,12 @@ const Signup = () => {
            }
            
        })
-       console.log(details)
+       
     }
     const SubmitDetail=()=>{
         console.log(details);
     }
+    console.log(details);
   return (
     <div className='SignupPage'>
     <div class="Signup">

@@ -1,7 +1,34 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "../Signin/Signin.scss"
 
 const Signin = () => {
+
+  const [signInDetails,setSignInDetails]=useState({
+    email:"",
+    pass:""
+  })
+
+  const handleSignIn=(event)=>{
+    const {name,value}=event.target;
+
+    setSignInDetails((prev)=>{
+        if(name==="email"){
+            return{
+                email:value,
+                pass:prev.pass
+            }
+        }
+        else{
+            return{
+                email:prev.email,
+                pass:value
+            }
+        }
+    })
+
+  }
+  console.log(signInDetails);
+
   return (
     <div className='SigninPage'>
     <div class="Signin">
@@ -10,11 +37,11 @@ const Signin = () => {
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" fdprocessedid="4p1xue"/>
+      <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" fdprocessedid="4p1xue" onChange={handleSignIn}/>
       <label for="floatingInput" style={{color:"black"}}>Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" fdprocessedid="53vih"/>
+      <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" fdprocessedid="53vih" onChange={handleSignIn}/>
       <label for="floatingPassword" style={{color:"black"}}>Password</label>
     </div>
     
